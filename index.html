@@ -5,75 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pudi Charan Manikanta Reddy - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      overflow-x: hidden;
     }
     .hero-section {
-      background: linear-gradient(135deg, #0d6efd, #6610f2);
-      color: white;
-      padding: 100px 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-section h1 {
-      font-size: 3rem;
-      font-weight: 700;
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') no-repeat center/cover;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: slideIn 1s ease-out;
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #e9d5ff;
+      margin-bottom: 2rem;
+    }
+    .hero-btn {
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
     .navbar {
-      background-color: #ffffff;
+      background: transparent;
+      transition: background 0.3s;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar.scrolled {
+      background: #ffffff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .nav-link {
-      color: #333;
+      color: #fff;
       font-weight: 500;
       transition: color 0.3s;
     }
+    .navbar.scrolled .nav-link {
+      color: #1e3a8a;
+    }
     .nav-link:hover {
+      color: #7c3aed;
+    }
+    .navbar.scrolled .nav-link:hover {
       color: #0d6efd;
     }
     .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .skill-card {
+      background: linear-gradient(135deg, #e0e7ff, #c4b5fd);
+      text-align: center;
+      padding: 20px;
     }
     .skill-card img {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 10px;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: #7c3aed;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .link-card {
+      background: #ffffff;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .link-card:hover {
+      background: #7c3aed;
+      transform: scale(1.05);
+    }
+    .link-card:hover a {
+      color: #fff;
+    }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+    }
+    .recommendation-card {
+      background: linear-gradient(135deg, #f3e8ff, #dbeafe);
+      padding: 20px;
     }
     .back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #0d6efd;
+      bottom: 30px;
+      right: 30px;
+      background: #7c3aed;
       color: white;
-      padding: 10px;
+      padding: 12px;
       border-radius: 50%;
-      transition: background-color 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
     .back-to-top:hover {
-      background-color: #0b5ed7;
+      background: #1e3a8a;
+      transform: scale(1.2);
+    }
+    .section {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <!-- Hero Section -->
   <section id="home" class="hero-section">
-    <div class="container">
+    <div class="hero-content">
       <h1>Pudi Charan Manikanta Reddy</h1>
-      <p class="lead mb-4">Aspiring Web Developer | Engineering Undergrad</p>
-      <a href="#about-me" class="btn btn-light btn-lg mx-2">About Me</a>
-      <a href="#projects" class="btn btn-outline-light btn-lg mx-2">View Projects</a>
+      <p>Web Developer | Innovator | Engineering Undergrad</p>
+      <a href="#about-me" class="btn btn-light hero-btn mx-2">Discover More</a>
+      <a href="#projects" class="btn btn-outline-light hero-btn mx-2">View My Work</a>
     </div>
   </section>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#home">Portfolio</a>
+      <a class="navbar-brand text-white" href="#home">Portfolio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -91,118 +207,121 @@
   </nav>
 
   <!-- About Me -->
-  <section id="about-me" class="container py-5">
+  <section id="about-me" class="container py-5 section">
+    <h2 class="section-title">About Me</h2>
     <div class="row align-items-center">
-      <div class="col-md-3 text-center">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXhPBjLnO3DONd4Narucz1USAwJbp8WL1HFQ&s" alt="Profile" class="img-fluid rounded-circle mb-3 shadow">
+      <div class="col-md-4 text-center">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXhPBjLnO3DONd4Narucz1USAwJbp8WL1HFQ&s" alt="Profile" class="img-fluid rounded-circle shadow-lg mb-3">
       </div>
-      <div class="col-md-9">
-        <h2 class="mb-4">Hi, I'm Charan!</h2>
-        <p class="text-muted">
-          I'm an engineering undergrad passionate about web development. With hands-on experience in front-end projects, I strive to build impactful, real-time solutions while continuously expanding my skill set.
+      <div class="col-md-8">
+        <h3 class="mb-3">Hi, I'm Charan!</h3>
+        <p class="text-muted lead">
+          I'm an engineering undergrad with a burning passion for web development. My journey is fueled by creating innovative, real-time solutions that make an impact. With hands-on experience in front-end and full-stack projects, I'm always pushing the boundaries of what's possible.
         </p>
-        <p class="text-muted">Email: <a href="mailto:manikantareddy1736@gmail.com" class="text-primary">manikantareddy1736@gmail.com</a> | Phone: +91 9951311736</p>
+        <p class="text-muted">
+          Email: <a href="mailto:manikantareddy1736@gmail.com" class="text-primary">manikantareddy1736@gmail.com</a> | Phone: +91 9951311736
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Links -->
-  <section id="links" class="bg-white py-5">
+  <section id="links" class="bg-white py-5 section">
     <div class="container">
-      <h2 class="text-center mb-5">Connect with Me</h2>
+      <h2 class="section-title">Connect with Me</h2>
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
         <div class="col">
-          <a href="https://github.com/charan1736" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">GitHub</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://github.com/charan1736" target="_blank" class="text-primary text-decoration-none">GitHub</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://linkedin.com/in/pudi-charan-manikanta-reddy-57722224b/" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">LinkedIn</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://linkedin.com/in/pudi-charan-manikanta-reddy-57722224b/" target="_blank" class="text-primary text-decoration-none">LinkedIn</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://www.hackerrank.com/profile/216K1A05A4" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">HackerRank</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://www.hackerrank.com/profile/216K1A05A4" target="_blank" class="text-primary text-decoration-none">HackerRank</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://www.codechef.com/users/charan1736" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">CodeChef</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://www.codechef.com/users/charan1736" target="_blank" class="text-primary text-decoration-none">CodeChef</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://leetcode.com/u/charan1736/" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">LeetCode</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://leetcode.com/u/charan1736/" target="_blank" class="text-primary text-decoration-none">LeetCode</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://www.salesforce.com/trailblazer/pudicharanmanikantareddy" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">Salesforce</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://www.salesforce.com/trailblazer/pudicharanmanikantareddy" target="_blank" class="text-primary text-decoration-none">Salesforce</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://www.freecodecamp.org/charan_1736" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">freeCodeCamp</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://www.freecodecamp.org/charan_1736" target="_blank" class="text-primary text-decoration-none">freeCodeCamp</a>
+          </div>
         </div>
         <div class="col">
-          <a href="https://unstop.com/u/pudiman2134" target="_blank" class="card text-center text-decoration-none text-primary p-3">
-            <div class="card-body">Unstop</div>
-          </a>
+          <div class="link-card card">
+            <a href="https://unstop.com/u/pudiman2134" target="_blank" class="text-primary text-decoration-none">Unstop</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="container py-5">
-    <h2 class="text-center mb-5">Skills & Certifications</h2>
+  <section id="skills" class="container py-5 section">
+    <h2 class="section-title">Skills & Certifications</h2>
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">Python</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">Java</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">C</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">C++</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">HTML</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">JavaScript</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <h5 class="card-title">DBMS</h5>
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
       <div class="col">
-        <div class="card skill-card text-center p-4">
+        <div class="skill-card card">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWEuZHwnSEbgi5aci1Y56ZVMFcaXnJ0PYdCg&s" alt="SQL">
           <h5 class="card-title">SQL</h5>
           <p class="card-text text-muted">Proficient</p>
@@ -212,12 +331,12 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="bg-white py-5">
+  <section id="projects" class="bg-white py-5 section">
     <div class="container">
-      <h2 class="text-center mb-5">My Projects</h2>
+      <h2 class="section-title">My Projects</h2>
       <div class="row g-4">
         <div class="col-12">
-          <div class="card p-4">
+          <div class="project-card card">
             <h3 class="card-title">
               <a href="https://charan1736.github.io/DesiQna-Interview-Experiences/DesiQna-Interview-Experiences-main/html/#" target="_blank" class="text-primary text-decoration-none">Educational Platform (E-Learning) →</a>
             </h3>
@@ -231,7 +350,7 @@
           </div>
         </div>
         <div class="col-12">
-          <div class="card p-4">
+          <div class="project-card card">
             <h3 class="card-title">Simple Interest Calculator</h3>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Developed a simple interest calculator to calculate the amount of interest using HTML, CSS, and JavaScript embedded into the code.</li>
@@ -239,7 +358,7 @@
           </div>
         </div>
         <div class="col-12">
-          <div class="card p-4">
+          <div class="project-card card">
             <h3 class="card-title">Face Recognition Attendance System</h3>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Description: Developed a local face recognition system for student attendance, aimed at making attendance record maintenance easier.</li>
@@ -255,18 +374,18 @@
   </section>
 
   <!-- Recommendations -->
-  <section id="recommendations" class="container py-5">
-    <h2 class="text-center mb-5">Recommendations</h2>
+  <section id="recommendations" class="container py-5 section">
+    <h2 class="section-title">Recommendations</h2>
     <div class="row g-4">
       <div class="col-md-6">
-        <div class="card p-4">
+        <div class="recommendation-card card">
           <p class="card-text font-italic text-muted">
             “Charan is a very quick learner and quickly grasps key concepts of Web development. He got a great attitude & he is an excellent team player. He has a curious mind and asks the right question. He takes initiative within a team and has potentials to lead the team.”
           </p>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="card p-4">
+        <div class="recommendation-card card">
           <p class="card-text font-italic text-muted">
             “I had worked along with Charan during the initial phase of our college project which needed Web development. He is a committed resource who has in depth knowledge about the domain. He will be an asset for any organisation!”
           </p>
@@ -276,17 +395,15 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="bg-white py-5">
+  <section id="contact" class="bg-white py-5 section">
     <div class="container">
-      <h2 class="text-center mb-5">Get in Touch</h2>
+      <h2 class="section-title">Get in Touch</h2>
       <div class="row justify-content-center">
-        <div class="col-md-6">
-          <p class="text-center text-muted mb-4">
-            I'd love to hear from you! Feel free to reach out via email for collaboration, feedback, or opportunities.
+        <div class="col-md-6 text-center">
+          <p class="text-muted lead mb-4">
+            Ready to collaborate or share opportunities? Reach out to me, and let's create something amazing together!
           </p>
-          <div class="text-center">
-            <a href="mailto:manikantareddy1736@gmail.com" class="btn btn-primary btn-lg">Send Email</a>
-          </div>
+          <a href="mailto:manikantareddy1736@gmail.com" class="btn btn-primary btn-lg hero-btn">Contact Me Now</a>
         </div>
       </div>
     </div>
@@ -300,5 +417,16 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    // Add scrolled class to navbar on scroll (CSS-based fallback since no JS was requested, but minimal JS for navbar effect)
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
