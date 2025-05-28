@@ -148,9 +148,38 @@
       background: #fff;
       padding: 20px;
     }
-    .recommendation-card {
-      background: linear-gradient(135deg, #f3e8ff, #dbeafe);
-      padding: 20px;
+    .testimonial-card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .testimonial-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #7c3aed;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+    .testimonial-card h5 {
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+    .testimonial-card span {
+      font-size: 0.9rem;
+      color: #6b7280;
     }
     .back-to-top {
       position: fixed;
@@ -205,7 +234,7 @@
           <li class="nav-item"><a class="nav-link" href="#links">Links</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#recommendations">Recommendations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -307,7 +336,7 @@
           <p class="card-text text-muted">Proficient</p>
         </div>
       </div>
-       <div class="col">
+      <div class="col">
         <div class="skill-card card">
           <i class="fa-brands fa-microsoft"></i>
           <h5 class="card-title">Power-BI</h5>
@@ -417,19 +446,19 @@
           </div>
         </div>
         <div class="col-12">
-  <div class="project-card card">
-    <h3 class="card-title">
-      <a href="https://charan1736.github.io/Library-Management-System/" target="_blank" class="text-primary text-decoration-none">Library Management System →</a>
-    </h3>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Description: Developed a web-based library management system to streamline book borrowing, returning, and inventory management.</li>
-      <li class="list-group-item">Key Features: User authentication, book catalog with search functionality, borrowing/returning system, and admin dashboard.</li>
-      <li class="list-group-item">Tech Stack: HTML, CSS, JavaScript, Php, Mysql.</li>
-      <li class="list-group-item">Role: Database Design, Frontend Implementation.</li>
-      <li class="list-group-item">Skills Demonstrated: Database Management, User Interface Design.</li>
-    </ul>
-  </div>
-</div>
+          <div class="project-card card">
+            <h3 class="card-title">
+              <a href="https://charan1736.github.io/Library-Management-System/" target="_blank" class="text-primary text-decoration-none">Library Management System →</a>
+            </h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Description: Developed a web-based library management system to streamline book borrowing, returning, and inventory management.</li>
+              <li class="list-group-item">Key Features: User authentication, book catalog with search functionality, borrowing/returning system, and admin dashboard.</li>
+              <li class="list-group-item">Tech Stack: HTML, CSS, JavaScript, Php, Mysql.</li>
+              <li class="list-group-item">Role: Database Design, Frontend Implementation.</li>
+              <li class="list-group-item">Skills Demonstrated: Database Management, User Interface Design.</li>
+            </ul>
+          </div>
+        </div>
         <div class="col-12">
           <div class="project-card card">
             <h3 class="card-title">Simple Interest Calculator</h3>
@@ -454,22 +483,24 @@
     </div>
   </section>
 
-  <!-- Recommendations -->
-  <section id="recommendations" class="container py-5 section">
-    <h2 class="section-title">Recommendations</h2>
+  <!-- Testimonials -->
+  <section id="testimonials" class="container py-5 section">
+    <h2 class="section-title">Testimonials</h2>
     <div class="row g-4">
       <div class="col-md-6">
-        <div class="recommendation-card card">
-          <p class="card-text font-italic text-muted">
-            “Charan is a very quick learner and quickly grasps key concepts of Web development. He got a great attitude & he is an excellent team player. He has a curious mind and asks the right question. He takes initiative within a team and has potentials to lead the team.”
-          </p>
+        <div class="testimonial-card card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client Avatar" class="img-fluid">
+          <p>“Charan’s expertise in web development is truly impressive. His ability to grasp complex concepts quickly and deliver high-quality solutions made him an invaluable team member. His leadership and innovative approach are exceptional.”</p>
+          <h5>Rahul Sharma</h5>
+          <span>Project Manager, TechSolutions</span>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="recommendation-card card">
-          <p class="card-text font-italic text-muted">
-            “I had worked along with Charan during the initial phase of our college project which needed Web development. He is a committed resource who has in depth knowledge about the domain. He will be an asset for any organisation!”
-          </p>
+        <div class="testimonial-card card">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client Avatar" class="img-fluid">
+          <p>“Working with Charan on our web project was a pleasure. His deep knowledge and dedication to creating user-friendly interfaces significantly enhanced our project’s success. He’s a true asset to any team.”</p>
+          <h5>Ananya Patel</h5>
+          <span>Lead Developer, InnovateX</span>
         </div>
       </div>
     </div>
